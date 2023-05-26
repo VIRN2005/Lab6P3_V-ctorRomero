@@ -1,11 +1,19 @@
+#ifndef CAZADOR_H
+#define CAZADOR_H
+
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <string>
 #include "Katana.h"
-#include "respiracion.h"
+#include "Respiracion.h"
+#include "Respiracion_Agua.h"
+#include "Respiracion_Fuego.h"
+#include "Respiracion_Roca.h"
 using namespace std;
 
 class Cazador {
-private:
+protected:
     string nombre;
     int vida;
     int vidaTotal;
@@ -28,4 +36,5 @@ public:
     int getVida();
 };
 
+#endif
 

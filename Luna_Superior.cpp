@@ -31,6 +31,14 @@ void Luna_Superior::mostrarInformacion() {
 	cout << "Ataque: " << ataque << std::endl;
 }
 
+void Luna_Superior::recibirAtaque(int puntosAtaque) {
+	vida -= puntosAtaque;
+
+	if (vida < 0) {
+		vida = 0;
+	}
+}
+
 int Luna_Superior::getVida() {
 	return vida;
 }

@@ -1,3 +1,4 @@
+#include <string>
 #include <cstdlib>
 #include <ctime>
 #include "katana.h"
@@ -44,7 +45,7 @@ string Katana::getColor() {
 }
 
 void Katana::mostrarInformacion() {
-	cout << "Ataque de la Katana: " << ataque << endl;
-	cout << "Color de la Katana: " << color << endl;
+	cout << "Ataque de la Katana: " << this->ataque << endl;
+	cout << "Color de la Katana: " << this->color << endl;
 }
 

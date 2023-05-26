@@ -14,6 +14,7 @@ public:
 	Luna_Superior();
 	Luna_Superior(string, int);
 	~Luna_Superior();
+	void recibirAtaque(int);
 	void asignarVida();
 	void asignarAtaque();
 	void mostrarInformacion();

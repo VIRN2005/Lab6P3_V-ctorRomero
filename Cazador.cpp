@@ -1,13 +1,15 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <string>
+#include <cstring>
+#include <string.h>
 #include "Cazador.h"
 #include "Katana.h"
 #include "Respiracion.h"
 #include "Respiracion_Agua.h"
 #include "Respiracion_Fuego.h"
 #include "Respiracion_Roca.h"
-
 using namespace std;
 
 static Katana* k = new Katana();
@@ -17,11 +19,11 @@ Cazador::Cazador() {
 }
 
 //Constructor
-Cazador::Cazador(string nombre) : nombre(nombre) {
+Cazador::Cazador(string nombre) {
 	asignarVida();
 	asignarAtaque();
-	katana = new Katana();
-	respiracion = crearRespiracion();
+	this->katana = new Katana();
+	this->respiracion = crearRespiracion();
 }
 
 // Crea Vida Random entre 20 a 30
@@ -91,13 +93,13 @@ int Cazador::getVida() {
 }
 // Imprimir
 void Cazador::mostrarInformacion() {
-	cout << "Nombre: " << nombre << endl;
-	cout << "Vida: " << vida << " puntos." << endl;
-	cout << "Puntos de Ataque: " << puntosAtaque << endl;
+	cout << "Nombre: " << this->nombre << endl;
+	cout << "Vida: " << this->vida << " puntos." << endl;
+	cout << "Puntos de Ataque: " << this->puntosAtaque << endl;
 	cout << "Katana: " << endl;
-	katana->mostrarInformacion();
+	this->katana->mostrarInformacion();
 	cout << "Respiración: " << endl;
-	respiracion->mostrarInformacion();
+	//respiracion->mostrarInformacion();
 }
 
 Cazador::~Cazador() {
