@@ -1,20 +1,24 @@
 #pragma once
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-class Katana {
+class Luna_Superior {
 private:
+	string nombre;
+	int posicion;
+	int vida;
 	int ataque;
-	string color;
 
 public:
+	Luna_Superior();
+	Luna_Superior(string, int);
+	~Luna_Superior();
+	void asignarVida();
 	void asignarAtaque();
-	void asignarColor();
 	void mostrarInformacion();
+	int getVida();
 	int getAtaque();
-	string getColor();
 };
 
 

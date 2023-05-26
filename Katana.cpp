@@ -3,12 +3,12 @@
 #include "katana.h"
 
 // Crea Ataque entre 10 y 20
-void Katana::setAtaque() {
+void Katana::asignarAtaque() {
 	ataque = rand() % 11 + 10;
 }
 
 // Crea Color Random
-void Katana::setColor() {
+void Katana::asignarColor() {
 	int colorRand = rand() % 4;
 	switch (colorRand) {
 	case 0: {
@@ -39,7 +39,12 @@ int Katana::getAtaque() {
 }
 
 // Obtener Color
-std::string Katana::getColor() {
+string Katana::getColor() {
 	return color;
+}
+
+void Katana::mostrarInformacion() {
+	cout << "Ataque de la Katana: " << ataque << endl;
+	cout << "Color de la Katana: " << color << endl;
 }
 

@@ -3,6 +3,11 @@
 #include <ctime>
 #include "Cazador.h"
 #include "Katana.h"
+#include "Respiracion.h"
+#include "Respiracion_Agua.h"
+#include "Respiracion_Fuego.h"
+#include "Respiracion_Roca.h"
+
 using namespace std;
 
 static Katana* k = new Katana();
@@ -12,12 +17,11 @@ Cazador::Cazador() {
 }
 
 //Constructor
-Cazador::Cazador(string nombre) {
-	this->nombre = nombre;
+Cazador::Cazador(string nombre) : nombre(nombre) {
 	asignarVida();
-	asignarKatana();
-	asignarRespiracion();
-	asignarPuntosAtaque();
+	asignarAtaque();
+	katana = new Katana();
+	respiracion = crearRespiracion();
 }
 
 // Crea Vida Random entre 20 a 30
@@ -25,15 +29,14 @@ void Cazador::asignarVida() {
 	vida = rand() % 11 + 20;
 }
 
-// Se le da Katana a cada Cazador
-void Cazador::asignarKatana() {
-	k->setAtaque();
-	k->setColor();
+// Generar un random entre 20 y 30
+void Cazador::asignarAtaque() {
+	puntosAtaque = rand() % 11 + 20;
 }
 
 // Asignación de Respiración
-void Cazador::asignarRespiracion() {
-	cout << "--MENU DE RESPIRACIÓN-- \n";
+Respiracion* Cazador::crearRespiracion() {
+	cout << "--MENU DE RESPIRACION-- \n";
 	cout << "1) Agua \n";
 	cout << "2) Fuego \n";
 	cout << "3) Roca \n";
@@ -56,19 +59,48 @@ void Cazador::asignarRespiracion() {
 		respiracion = new Respiracion_Roca();
 	}
 		  break;
+
+	default: {
+		return nullptr;
+	}
 	}
 }
 
-// Generar un número aleatorio entre 20 y 30
-void Cazador::asignarPuntosAtaque() {
-	puntosAtaque = rand() % 11 + 20;
+int Cazador::calcularAtaqueTotal() {
+	int ataqueTotal = puntosAtaque + katana->getAtaque() + respiracion->getRangoPoder();
+	return ataqueTotal;
 }
 
+void Cazador::recibirAtaque(int ataque) {
+	vida -= ataque;
+	if (vida < 0) {
+		vida = 0;
+	}
+}
+
+void Cazador::recuperarVida() {
+	vida = vidaTotal;
+}
+
+std::string Cazador::getNombre() {
+	return nombre;
+}
+
+int Cazador::getVida() {
+	return vida;
+}
 // Imprimir
 void Cazador::mostrarInformacion() {
-	cout << "Nombre: " << nombre << std::endl;
-	cout << "Vida: " << vida << std::endl;
-	cout << "Katana - Ataque: " << katana.getAtaque() << ", Color: " << katana.getColor() << std::endl;
-	cout << "Respiración - Rango de poder: " << respiracion->getRangoPoder() << std::endl;
-	cout << "Puntos de Ataque: " << puntosAtaque << std::endl;
+	cout << "Nombre: " << nombre << endl;
+	cout << "Vida: " << vida << " puntos." << endl;
+	cout << "Puntos de Ataque: " << puntosAtaque << endl;
+	cout << "Katana: " << endl;
+	katana->mostrarInformacion();
+	cout << "Respiración: " << endl;
+	respiracion->mostrarInformacion();
+}
+
+Cazador::~Cazador() {
+	delete katana;
+	delete respiracion;
 }
