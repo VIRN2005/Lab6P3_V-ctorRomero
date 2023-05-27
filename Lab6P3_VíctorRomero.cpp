@@ -28,6 +28,7 @@ void simularCombate(Cazador* cazador, Luna_Superior* lunaSuperior) {
 			cout << "Valor de Ataque = " << ataqueCazador  << endl;
 			cout << "Vida actualizada de la Luna Superior = " << lunaSuperior->getVida() << std::endl;
 			turnoCazador = false;
+
 		}
 		else {
 			int porcentajeAtaque = rand() % 41 + 60; 
@@ -38,12 +39,13 @@ void simularCombate(Cazador* cazador, Luna_Superior* lunaSuperior) {
 			cout << "Vida actual del cazador: " << cazador->getVida() << endl;
 			turnoCazador = true;
 		}
-		/*if (dynamic_cast<Pilar*>(Cazador) != nullptr && rand() % 100 < 5) {
+
+		if (cazador->getVida() > 0 && rand() % 100 < 5) {
 			cazador->recuperarVida();
 			cout << "El pilar " << cazador->getNombre() << " ha recuperado su vida por completo." << std::endl;
 			cout << "Vida actual del pilar: " << cazador->getVida() << std::endl;
-		}*/
-	}
+		}
+    }
 
 	if (cazador->getVida() <= 0) {
 		cout << "La Luna Superior ha ganado el combate." << endl;
@@ -75,7 +77,7 @@ void menu() {
 			cout << "Ingrese nombre de Cazador: ";
 			cin >> nombre;
 			Cazador* cazador = new Cazador(nombre);
-			cazador -> mostrarInformacion();
+			cazador->mostrarInformacion();
 			cazadores.push_back(cazador);
 		}
 			  break;
@@ -85,7 +87,7 @@ void menu() {
 			cout << "Ingrese nombre del Pilar: ";
 			cin >> nombre;
 			Pilar* pilar = new Pilar(nombre);
-			pilar -> mostrarInformacion();
+			pilar->mostrarInformacion();
 			cazadores.push_back(pilar);
 		}
 			  break;
@@ -94,7 +96,7 @@ void menu() {
 			string nombre;
 			cout << "Ingrese nombre de la Luna Superior: ";
 			cin >> nombre;
-			
+
 			int pos;
 			cout << "Ingrese la posicion de la Luna: ";
 			cin >> pos;
@@ -153,11 +155,12 @@ void menu() {
 				delete lunas_sup;
 			}
 		}
+			  break;
 		}
 	} while (opcion != 0);
 }
 
 int main() {
-	srand(time(0));
 	menu();
+	srand(time(0));
 }

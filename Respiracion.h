@@ -6,6 +6,7 @@ protected:
     int rangoPoder;
 
 public:
+    void mostrarInformacion();
     virtual void generarRangoPoder() = 0;
     int getRangoPoder();
 };

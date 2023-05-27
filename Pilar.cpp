@@ -31,9 +31,9 @@ int Pilar::calcularAtaqueTotal() {
 
 void Pilar::mostrarInformacion() {
 	Cazador::mostrarInformacion();
-	cout << "Lunas Superiores Vencidas: " << lunasSuperioresVencidas << endl;
-	cout << "Vida Extra: " << vidaExtra << " puntos." << endl;
-	cout << "Ataque Extra: " << ataqueExtra << " puntos." << endl;
+	cout << "Lunas Superiores Vencidas: " << this->lunasSuperioresVencidas << endl;
+	cout << "Vida Extra: " << this->vidaExtra << " puntos." << endl;
+	cout << "Ataque Extra: " << this->ataqueExtra << " puntos." << endl;
 }
 
 Pilar::~Pilar() {

@@ -6,3 +6,5 @@
 void Respiracion_Fuego::generarRangoPoder() {
     rangoPoder = rand() % 21 + 80;
 }
+
+

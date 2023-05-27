@@ -22,6 +22,7 @@ Cazador::Cazador() {
 Cazador::Cazador(string nombre) {
 	asignarVida();
 	asignarAtaque();
+	this->nombre = nombre;
 	this->katana = new Katana();
 	this->respiracion = crearRespiracion();
 }
@@ -97,9 +98,9 @@ void Cazador::mostrarInformacion() {
 	cout << "Vida: " << this->vida << " puntos." << endl;
 	cout << "Puntos de Ataque: " << this->puntosAtaque << endl;
 	cout << "Katana: " << endl;
-	this->katana->mostrarInformacion();
+	katana->mostrarInformacion();
 	cout << "Respiración: " << endl;
-	//respiracion->mostrarInformacion();
+	respiracion->mostrarInformacion();
 }
 
 Cazador::~Cazador() {

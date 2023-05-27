@@ -6,3 +6,5 @@
 void Respiracion_Roca::generarRangoPoder() {
     rangoPoder = rand() % 21 + 100;
 }
+
+

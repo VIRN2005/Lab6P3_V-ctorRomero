@@ -6,3 +6,7 @@ int Respiracion::getRangoPoder() {
 	return rangoPoder;
 }
 
+void Respiracion::mostrarInformacion() {
+	Respiracion::mostrarInformacion();
+}
+
